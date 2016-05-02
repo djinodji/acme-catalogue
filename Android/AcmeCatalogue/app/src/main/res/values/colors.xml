@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#303F9F</color>
+    <color name="Black" >#000000</color>
+
+    <color name="list_item_title">#FFFFFF</color>
+    <color name="list_divider">#FFFFFF</color>
+    <color name="list_background">#A4A4A4</color>
+    <color name="counter_text_color">#CC4081</color>
+
+    <color name="counter_text_bg">#00CC81</color>
+
+    <color name="list_background_pressed">#CCCCCC</color>
+    <color name="top_menu_bg">#CCEEFF</color>
+
+    <color name="holo_blue_dark">#ff0099cc</color>
+    <color name="view_divider_color">#BABABA</color>
+    <color name="view_divider_color_2">#DADADA</color>
+</resources>
