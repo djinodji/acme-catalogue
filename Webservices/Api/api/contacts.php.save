@@ -1,0 +1,112 @@
+<?php
+include 'classes/Database.php';
+$URL       = "rattrapage-2.estiam.com/api/";
+$namespace = $URL . '?wsdl';
+
+/*require_once(“config.php”);*/
+require_once("lib/nusoap.php");
+  
+
+$server = new soap_server;
+
+$server->configureWSDL("addressbook1", $namespace);
+
+/*$server->configureWSDL("addressbook1" , "urn:".$_SERVER['SCRIPT_URI']);*/
+$server->wsdl->addComplexType(
+"Contact",
+"complexType",
+"struct",
+"all",
+"",
+array(
+"contact" => array("name" => "contact", "type" => "xsd:string"),
+"email" => array("name" => "email", "type" => "xsd:string"),
+
+"" => array("name" => "contact", "type" => "xsd:string"),
+"email" => array("name" => "email", "type" => "xsd:string"),
+
+
+
+
+
+)
+);
+
+
+$server->wsdl->addComplexType(
+"ContactArray",
+"complexType",
+"array",
+ "",
+"SOAP-ENC:Array",
+array(),
+array(
+array("ref"=>"SOAP-ENC:arrayType","wsdl:arrayType"=>"tns:Contact[]")
+),
+"tns:Contact"
+);
+
+$server->register("getAutocompleteContacts",
+array("email" => "xsd:string", "num" => "xsd:int", "token" => "xsd:string"),
+array("return "=> "tns:ContactArray"),
+"urn:".$namespace,
+"urn:".$namespace."#getAutocompleteContacts",
+"rpc",
+"encoded",
+"Fetch array of address book contacts for use in autocomplete"); 
+ 
+/*
+* This function takes an $email address and returns an array of email addresses
+* that are the given email address’s recent contacts from their address book.
+*
+* @param string $email (the email address of the user)
+* @param string $token (a password that is used for authentication for use of this function, it is NOT the email users password.)
+*/
+function getAutocompleteContacts( $email, $num, $token ) {
+$result = array();
+ $dbhost = '127.0.0.1';
+   $dbuser = 'root';
+   $dbpass = 'estiam2';
+
+   $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+
+   if(! $conn ) {
+      die('Could not connect: ' . mysql_error());
+   }
+ 
+   $sql = 'SELECT * FROM Utilisateur';
+   mysql_select_db('acmedb');
+
+$retval = mysql_query( $sql, $conn );
+   
+   if(! $retval ) {
+      die('Could not get data: ' . mysql_error());
+   }
+    while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+
+       $result[] = array(
+                     "contact"=>$row['nom'],
+                    "email" =>$row['prenom']
+        );
+
+    }
+                   Database::disconnect();
+
+
+
+
+$result[] = array(  "contact" => "Chaos Captain", "email" => "choas@sdfusidfousdf.com");
+$result[] = array( "contact" => "Joe Joe", "email" => "choas@sdf768sdf798s7df987.com");
+
+return $result;
+
+#return new soap_fault("Server",  "", "Fallthrough error, should have faulted on invalid type above","");
+
+ 
+}
+ 
+$POST_DATA = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : '';
+$server->service($POST_DATA);
+exit();
+
+?>
