@@ -1,0 +1,68 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Creation Album
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+
+        <div class="custom-caption">
+            <h1>AlbumPhoto</h1>
+
+            <div class="col-lg-4">
+                <table class="table table-responsive">
+                    <tbody>
+                    <tr>
+                        <th>Albumid</th>
+                        <td>{{ albumPhoto.albumId }}</td>
+                    </tr>
+                    <tr>
+                        <th>Imageid</th>
+                        <td>{{ albumPhoto.imageId }}</td>
+                    </tr>
+                    <tr>
+                        <th>Order</th>
+                        <td>{{ albumPhoto.orderimage }}</td>
+                    </tr>
+                    <tr>
+                        <th>Statut</th>
+                        <td>{{ albumPhoto.statut }}</td>
+                    </tr>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ albumPhoto.id }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {#<li>
+                <a class="btn btn-primary btn-sm" href="{{ path('albumphoto_index') }}">Retour</a>
+            </li>#}
+            <div class="col-lg-12">
+                <div class="col-lg-1">
+                    <a class="glyphicon glyphicon-edit fa-3x"
+                       href="{{ path('albumphoto_edit', { 'id': albumPhoto.id }) }}"></a>
+                </div>
+                <div class="col-lg-4">
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-primary btn-sm" type="submit" value="Suprimer">
+                    {{ form_end(delete_form) }}
+                </div>
+
+            </div>
+</div>
+    </section>
+{% endblock top %}
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

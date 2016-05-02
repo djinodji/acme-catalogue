@@ -1,0 +1,60 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Edition Album
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+
+            <div class="custom-caption">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h1>Liste des Albums</h1></div>
+                    <div class="panel-body">
+
+                    <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th colspan="3">Dernière mise à jour</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for album in albums %}
+                        <tr>
+                            <td><a href="{{ path('album_show', { 'id': album.id }) }}">{{ album.nom }}</a></td>
+                            <td>{% if album.lastUpdateTime %}{{ album.lastUpdateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                            <td>
+                                        <a class="glyphicon glyphicon-eye-open fa-2x" href="{{ path('album_show', { 'id': album.id }) }}"></a>
+
+                            </td>
+                            <td>
+                                <a class="glyphicon glyphicon-edit fa-2x" href="{{ path('album_edit', { 'id': album.id }) }}"></a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr><a class="btn bg-primary small" href="{{ path('album_new') }}">Créer un album</a>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+</div>
+                </div>
+    </section>
+{% endblock top %}
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

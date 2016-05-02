@@ -1,0 +1,37 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - utilisateur
+{% endblock %}
+
+{% block top %}
+<section id="home">
+
+
+    <div class="custom-caption">
+    <h1> Creation utilisateur </h1>
+<div class="col-lg-4">
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-lg btn-primary btn-sm" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+
+            <a class="btn btn-lg btn-primary btn-sm" href="{{ path('utilisateur_index') }}">Retour</a>
+
+    </div>
+    </div>
+</section>
+{% endblock top %}
+
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

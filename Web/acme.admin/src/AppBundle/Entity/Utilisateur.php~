@@ -1,0 +1,333 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * Utilisateur
+ */
+class Utilisateur
+{
+    /**
+     * @var string
+     */
+    private $nom;
+
+    /**
+     * @var string
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $photo;
+
+    /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @var integer
+     */
+    private $roleType;
+
+    /**
+     * @var string
+     */
+    private $telephone;
+
+    /**
+     * @var integer
+     */
+    private $statut;
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $album;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->album = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Utilisateur
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Utilisateur
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Utilisateur
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Utilisateur
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Utilisateur
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Utilisateur
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set roleType
+     *
+     * @param integer $roleType
+     *
+     * @return Utilisateur
+     */
+    public function setRoleType($roleType)
+    {
+        $this->roleType = $roleType;
+
+        return $this;
+    }
+
+    /**
+     * Get roleType
+     *
+     * @return integer
+     */
+    public function getRoleType()
+    {
+        return $this->roleType;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param string $telephone
+     *
+     * @return Utilisateur
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param integer $statut
+     *
+     * @return Utilisateur
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return integer
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add album
+     *
+     * @param \AppBundle\Entity\Album $album
+     *
+     * @return Utilisateur
+     */
+    public function addAlbum(\AppBundle\Entity\Album $album)
+    {
+        $this->album[] = $album;
+
+        return $this;
+    }
+
+    /**
+     * Remove album
+     *
+     * @param \AppBundle\Entity\Album $album
+     */
+    public function removeAlbum(\AppBundle\Entity\Album $album)
+    {
+        $this->album->removeElement($album);
+    }
+
+    /**
+     * Get album
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
+}
+

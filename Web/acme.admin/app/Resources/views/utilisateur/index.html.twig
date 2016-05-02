@@ -1,0 +1,70 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Liste des utilisateurs
+{% endblock %}
+
+{% block top %}
+<section id="home">
+
+
+
+    <div class="custom-caption">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h1>Liste des Utilisateurs</h1></div>
+            <div class="panel-body">
+
+            <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Username</th>
+                <th>Photo</th>
+                <th>Email</th>
+                <th colspan="3">Telephone</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td><a href="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}">{{ utilisateur.nom }}</a></td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.username }}</td>
+                <td><img width="50" src="{{ utilisateur.photo }}"></td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.telephone }}</td>
+                <td>
+
+                            <a class="glyphicon glyphicon-eye-open fa-2x" href="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}"></a>
+                        </td><td>
+                            <a class="glyphicon glyphicon-edit fa-2x" href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}"></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+
+            <a class="btn btn-primary btn-sm" href="{{ path('utilisateur_new') }}">Créer un utilisateur</a>
+            <a class="btn btn-primary btn-sm"  href="{{ path('abonnement_index')}}" >Gestion des abonnements</a>
+        </tr>
+        </tbody>
+    </table>
+
+    </div>
+            </div>
+        </div>
+</section>
+{% endblock top %}
+
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

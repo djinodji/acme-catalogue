@@ -1,0 +1,40 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Creation Album
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+
+            <div class="custom-caption">
+                <h1>Album creation</h1>
+                <div class="row">
+                <div class="form-group col-lg-5">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div class="col-lg-12">
+
+                    <input class="btn btn-primary btn-sm" type="submit" value="Enregistrer"/>
+
+                    <a class="btn btn-primary btn-sm" href="{{ path('album_index') }}">Retourner sur la liste</a>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+                </div>
+
+            </div>
+    </section>
+{% endblock top %}
+
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

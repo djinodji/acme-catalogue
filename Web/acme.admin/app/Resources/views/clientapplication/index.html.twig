@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ClientApplication list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Uidapplication</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for clientApplication in clientApplications %}
+            <tr>
+                <td><a href="{{ path('clientapplication_show', { 'id': clientApplication.id }) }}">{{ clientApplication.nom }}</a></td>
+                <td>{{ clientApplication.uidApplication }}</td>
+                <td>{{ clientApplication.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('clientapplication_show', { 'id': clientApplication.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('clientapplication_edit', { 'id': clientApplication.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('clientapplication_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

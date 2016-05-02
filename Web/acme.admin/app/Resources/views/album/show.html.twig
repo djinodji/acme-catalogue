@@ -1,0 +1,47 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Album
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+
+        <div class="item">
+
+            <div class="custom-caption">
+
+                <table class="table table-responsive">
+                    <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ album.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Dernière mise à jour </th>
+                        <td>{% if album.lastUpdateTime %}{{ album.lastUpdateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+
+
+                    </tbody>
+
+                </table>
+
+                <a class="btn btn-primary btn-sm" href="{{ path('album_index') }}">Retourner sur la liste</a>
+
+                <a class="btn btn-primary btn-sm" href="{{ path('album_edit', { 'id': album.id }) }}">Modifier</a>
+
+            <div class="col-lg-3">
+                {{ form_start(delete_form) }}
+                <input class="btn btn-primary btn-sm" type="submit" value="Suprimer">
+                {{ form_end(delete_form) }}
+            </div>
+            </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+{% endblock %}

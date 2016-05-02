@@ -1,0 +1,89 @@
+
+<style>
+    body {margin:0;}
+    ul.topnav li a:hover {background-color: #111;}
+
+    ul.topnav {
+        position: relative;
+        background-color: 	#383838 ;
+        margin: 0;
+        padding: 0;
+    }
+    #cssmenu ul li.icon {display: none;}
+    @media screen and (max-width:680px) {
+        #cssmenu ul li:not(:first-child) {display: none;}
+        #cssmenu ul li.icon {
+            float: right;
+            display: inline-block;
+        }
+    }
+
+    @media screen and (max-width:600px) {
+        #cssmenu ul.responsive {position: relative;}
+        #cssmenu ul.responsive li.icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        #cssmenu ul.responsive li {
+            float: none;
+            display: inline;
+        }
+        #cssmenu ul.responsive li a {
+            display: block;
+            text-align: left;
+        }
+    }
+</style>
+<header id="header" role="banner">
+
+            <div id='cssmenu'>
+                <ul class="topnav">
+
+                    <li class="{% if 'home' == app.request.get('_route') %}active{% endif %}">
+                        <a class="no-scroll" href="{{ path('home') }}"><span>Accueil</span></a>
+                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="{% if 'produit_index' == app.request.get('_route') %}active{% endif %}">
+                            <a class="no-scroll" href="{{ path('produit_index') }}">Produit</a>
+                        </li>
+
+                        <li class="{% if 'album_index' == app.request.get('_route') %}active{% endif %}">
+                            <a class="no-scroll" href="{{ path('album_index') }}">Album</a>
+                        </li>
+
+                        <li class="{% if 'image_upload' == app.request.get('_route') %}active{% endif %}">
+                            <a class="no-scroll" href="{{ path('image_upload') }}">Charger des images</a>
+                        </li>
+
+                        <li class="{% if 'albumphoto_new' == app.request.get('_route') %}active{% endif %}">
+                            <a class="no-scroll" href="{{ path('albumphoto_new') }}">Mapper des images</a>
+                        </li>
+
+                        <li class="{% if 'utilisateur_index' == app.request.get('_route') %}active{% endif %}">
+                            <a class="no-scroll" href="{{ path('utilisateur_index') }}">Utilisateurs</a>
+                        </li>
+
+                        <li class="icon">
+                            <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+                        </li>
+
+                    {% endif %}
+
+                </ul>
+
+                <div style="position: absolute; top: 0; right: 50px; z-index: 100">
+                    {% if is_granted('ROLE_USER') %}
+                        {{ app.user.username }}
+                        <a href="{{ path('logout') }}"> Déconnexion</a>
+
+                    {% else %}
+
+                        <a href="{{ path('login') }}">Login</a>
+
+                    {% endif %}
+                </div>
+
+            </div>
+
+</header>

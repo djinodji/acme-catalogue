@@ -1,0 +1,52 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Album
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+
+        <div class="item">
+
+            <div class="custom-caption">
+                <h1>Produit</h1>
+
+                <table class="table table-responsive">
+                    <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ produit.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ produit.description }}</td>
+                    </tr>
+                    <tr>
+
+                        <th>
+                            <div class="col-lg-4">
+                        <a  class="btn btn-primary btn-sm" href="{{ path('produit_index') }}">Retourner sur la liste</a>
+</div>
+                            <div class="col-lg-3">
+                        <a  class="btn btn-primary btn-sm" href="{{ path('produit_edit', { 'id': produit.id }) }}">Modifier</a>
+</div>
+                        <div class="col-lg-2">
+                            {{ form_start(delete_form) }}
+                            <input  class="btn btn-primary btn-sm" type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </div>
+                        </th>
+                    </tr>
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

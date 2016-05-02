@@ -1,0 +1,59 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - abonnements
+{% endblock %}
+
+{% block top %}
+<section id="home">
+
+    <div class="custom-caption">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h1>Liste des Abonnements</h1></div>
+            <div class="panel-body">
+
+
+            <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th colspan="3">Album</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td><a  href="{{ path('utilisateur_show', { 'id': abonnement.utilisateur.id }) }}">{{ abonnement.utilisateur.username }}</a></td>
+                <td><a  href="{{ path('album_show', { 'id': abonnement.album.id }) }}">{{ abonnement.album.nom }}</a></td>
+
+
+
+                <td>
+                    <a class="glyphicon glyphicon-eye-open fa-2x" href="{{ path('abonnement_show', { 'id': abonnement.id }) }}"></a>
+</td>
+                <td>
+                    <a class="glyphicon glyphicon-edit fa-2x" href="{{ path('abonnement_edit', { 'id': abonnement.id }) }}"></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+            <a class="btn bg-primary small" href="{{ path('abonnement_new') }}">Créer un abonnement</a>
+
+    </div>
+
+</section>
+{% endblock top %}
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

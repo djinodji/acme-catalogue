@@ -1,0 +1,86 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - utilisateur
+{% endblock %}
+
+{% block top %}
+<section id="home">
+
+
+    <div class="custom-caption">
+    <h1>Utilisateur</h1>
+
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ utilisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ utilisateur.username }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ utilisateur.photo }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ utilisateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ utilisateur.password }}</td>
+            </tr>
+            <tr>
+                <th>Roletype</th>
+                <td>{{ utilisateur.roleType }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ utilisateur.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ utilisateur.statut }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ utilisateur.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <div class="col-lg-12">
+            <div class="col-lg-2">
+            <a class="btn btn-primary btn-sm" href="{{ path('utilisateur_index') }}">Voir la liste</a>
+            </div>
+            <div class="col-lg-2">
+            <a class="btn btn-primary btn-sm" href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}">Modifier</a>
+</div>
+            <div class="col-lg-2">
+            {{ form_start(delete_form) }}
+                <input class="btn btn-primary btn-sm" type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+                </div>
+        </div>
+    </div>
+</section>
+{% endblock top %}
+
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

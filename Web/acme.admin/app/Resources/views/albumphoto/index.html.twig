@@ -1,0 +1,62 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Creation Album
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+
+        <div class="custom-caption">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1>Liste des photos</h1></div>
+                <div class="panel-body">
+
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Album</th>
+                <th>Image</th>
+                <th colspan="3">Ordre</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for albumPhoto in albumPhotos %}
+            <tr>
+
+                <td><a href="{{ path('album_show', { 'id': albumPhoto.albumId }) }}"> {{ albumPhoto.albumnom }}</a></td>
+                <td> <a href="{{ path('image_show', { 'id': albumPhoto.imageId }) }}">{{ albumPhoto.imagenom }}</a></td>
+                <td>{{ albumPhoto.orderimage }}</td>
+                <td>
+
+                            <a class="glyphicon glyphicon-eye-open fa-2x" href="{{ path('albumphoto_show', { 'id': albumPhoto.id }) }}"></a>
+</td>
+                <td>
+                            <a class="glyphicon glyphicon-edit fa-2x" href="{{ path('albumphoto_edit', { 'id': albumPhoto.id }) }}"></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+            <a  class="btn btn-primary btn-sm" href="{{ path('albumphoto_new') }}">Create a new entry</a>
+
+    </div>
+</div>
+            </div>
+</section>
+{% endblock top %}
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Liste des Produits
+{% endblock %}
+
+{% block top %}
+    <section id="home">
+
+
+
+            <div class="custom-caption">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h1>Liste des Produits</h1></div>
+                    <div class="panel-body">
+
+
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th colspan="3">Description</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for produit in produits %}
+                        <tr>
+                            <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.nom }}</a></td>
+                            <td>{{ produit.description }}</td>
+
+                            <td>
+                                <a class="glyphicon glyphicon-eye-open fa-2x"
+                                   href="{{ path('produit_show', { 'id': produit.id }) }}"></a>
+                            </td>
+                            <td>
+                                <a class="glyphicon glyphicon-edit fa-2x"
+                                   href="{{ path('produit_edit', { 'id': produit.id }) }}"></a>
+                            </td>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                    <tr><a class="btn btn-primary btn-sm" href="{{ path('produit_new') }}">Créer un nouveau produit</a>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+</div>
+                </div>
+    </section>
+{% endblock top %}
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

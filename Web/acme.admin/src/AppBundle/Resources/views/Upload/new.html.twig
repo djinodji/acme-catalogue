@@ -1,0 +1,37 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - chargement photo
+{% endblock %}
+
+{% block top %}
+<section id="home">
+
+    <div class="custom-caption">
+        {% for message in app.session.flashbag.get('success') %}
+            {{ message }}
+        {% endfor %}
+
+        {#<a href="{{ path('article_list') }}" class="btn btn-info pull-right" role="button">Back to the list</a>#}
+
+        <h1>  nouvelle photo</h1>
+
+        {{ form_start(uploadForm) }}
+            {{ form_widget(uploadForm) }}
+
+            <button type="submit" class="btn btn-primary">Charger</button>
+        {{ form_end(uploadForm) }}
+</div>
+</section>
+{% endblock top %}
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

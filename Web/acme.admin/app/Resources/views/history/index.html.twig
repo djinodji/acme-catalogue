@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>History list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Actiontype</th>
+                <th>Isuserdestination</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for history in histories %}
+            <tr>
+                <td><a href="{{ path('history_show', { 'id': history.id }) }}">{{ history.date }}</a></td>
+                <td>{{ history.statut }}</td>
+                <td>{{ history.actionType }}</td>
+                <td>{% if history.isuserdestination %}Yes{% else %}No{% endif %}</td>
+                <td>{{ history.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('history_show', { 'id': history.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('history_edit', { 'id': history.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('history_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

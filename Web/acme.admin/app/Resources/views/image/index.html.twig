@@ -1,0 +1,55 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - liste des images
+{% endblock %}
+
+{% block top %}
+<section id="home">
+
+    <div class="custom-caption">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h1>Liste des Images</h1></div>
+            <div class="panel-body">
+
+
+            <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th colspan="4">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr>
+                <td><a href="{{ path('image_show', { 'id': image.id }) }}">{{ image.nom }}</a></td>
+                <td>{{ image.description }}</td>
+
+                <td>
+                            <a  class="glyphicon glyphicon-eye-open fa-2x" href="{{ path('image_show', { 'id': image.id }) }}"></a>
+</td> <td>
+                            <a class="glyphicon glyphicon-edit fa-2x" href="{{ path('image_edit', { 'id': image.id }) }}"></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+</div>
+        </div>
+</section>
+{% endblock top %}
+
+{% block content %}
+    <div class="carousel-inner">
+        <div class="row">
+            <div class="col-sm-12 col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
